@@ -134,7 +134,7 @@ const updateProductById = async (req, res) => {
         restOftheImages = product.images.filter((i) => imgId != i._id);
       }
 
-      for (dm of deletedImages) {
+      for (let dm of deletedImages) {
         await deleteImageFromCloud(dm.imageId);
       }
     } else {
@@ -185,7 +185,6 @@ const updateProductById = async (req, res) => {
     session.endSession();
 
     res.status(201).json({ message: "Product updated successfully" });
-    // create new product
   } catch (error) {
     if (error.code && error.code === 11000) {
       const field = Object.keys(error.keyPattern)[0];
