@@ -1,3 +1,4 @@
+import helmet from "helmet";
 import { connectDB } from "../config/db.js";
 import setupRoutes from "./routes.js";
 import { AppCors } from "./security.js";
@@ -11,7 +12,7 @@ export const startServer = async ({ port }) => {
   await connectDB();
 
   // TODO - ADD Helmet for secure connection
-
+  app.use(helmet());
   // setup modules
   setupRoutes(app);
 

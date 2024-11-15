@@ -3,17 +3,20 @@ import { maximumImageSize, validImageTypes } from "../config/settings.js";
 
 export const NewProductSchema = z.object({
   sku: z.string().min(1, {
-    message: "SKU title is required",
+    message: "SKU is required",
   }),
   name: z.string().min(1, {
-    message: "Job summary is required",
+    message: "Name is required",
   }),
   qty: z.number().min(0, {
     message: "Quantity is required",
   }),
-  description: z.string().min(1, {
-    message: "Description is required",
-  }),
+  description: z
+    .string()
+    .min(1, {
+      message: "Description is required",
+    })
+    .max(128),
   price: z.number().min(0, {
     message: "Price is required",
   }),
@@ -46,17 +49,20 @@ export const NewProductSchema = z.object({
 
 export const UpdateProductSchema = z.object({
   sku: z.string().min(1, {
-    message: "SKU title is required",
+    message: "SKU is required",
   }),
   name: z.string().min(1, {
-    message: "Job summary is required",
+    message: "Name is required",
   }),
   qty: z.number().min(0, {
     message: "Quantity is required",
   }),
-  description: z.string().min(1, {
-    message: "Description is required",
-  }),
+  description: z
+    .string()
+    .min(1, {
+      message: "Description is required",
+    })
+    .max(128),
   price: z.number().min(0, {
     message: "Price is required",
   }),
